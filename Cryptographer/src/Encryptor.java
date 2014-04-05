@@ -44,27 +44,27 @@ public class Encryptor
 			{
 			case "a":
 				{
-				reversedText.replace(i, i +1, "xx");
+				reversedText.replace(i, i +1, "@");
 				break;
 				}
 			case "e":
 				{
-				reversedText.replace(i, i +1, "vv");
+				reversedText.replace(i, i +1, "#");
 				break;
 				}
 			case "i":
 				{
-				reversedText.replace(i, i +1, "kk");
+				reversedText.replace(i, i +1, "$");
 				break;
 				}
 			case "o":
 				{
-				reversedText.replace(i, i +1, "qq");
+				reversedText.replace(i, i +1, "%");
 				break;
 				}
 			case "u":
 				{
-				reversedText.replace(i, i +1, "jj");
+				reversedText.replace(i, i +1, "&");
 				break;
 				}
 			}
