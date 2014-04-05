@@ -5,7 +5,9 @@ import java.util.Scanner;
 public class Encryptor
 	{
 	static String originalSentence;
-	public static void main(String[] args)
+	static String textInBlocks;
+	
+	public static String encryptor()
 		{
 		System.out.println("Please enter your sentence to be encrypted: ");
 		Scanner userInput = new Scanner(System.in);
@@ -75,9 +77,10 @@ public class Encryptor
 			{
 		    separator.insert(((i + 1) * 5) + i, " ");
 			}
-		String textInBlocks = separator.toString();
+		textInBlocks = separator.toString();
 		
 		System.out.println("The final output is " + textInBlocks);
+		return textInBlocks;
 
 		}
 	}
