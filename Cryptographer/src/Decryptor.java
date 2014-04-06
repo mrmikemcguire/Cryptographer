@@ -48,25 +48,22 @@ public class Decryptor
 		
 		// add spaces back in
 		StringBuilder spaceReplacer = new StringBuilder(regularSpacelessText);
-		String [] tempString = new String[Encryptor.locationsOfSpaces.size()];
-		Object [] tempStringArray = Encryptor.locationsOfSpaces.toArray(tempString);
+		//String [] tempString = new String[Encryptor.locationsOfSpaces.size()];
+		//String [] tempStringArray = (String[]) Encryptor.locationsOfSpaces.toArray(tempString);
 
-		for(int i = (Encryptor.locationsOfSpaces.size()); i > 0; i--) 
-			{			
-			Object index = tempStringArray[i];
-			System.out.println("The index is " + index);
-			spaceReplacer.insert((int) index, " ");
+		for (int i = (Encryptor.locationsOfSpaces.size()); i > 0; i--)
+			{
+			int spaces = ((int) Encryptor.locationsOfSpaces.get(i - 1));
+			System.out.println(spaces);
+			spaceReplacer.insert((spaces - i + 1), " ");
 			decryptedText = spaceReplacer.toString();
+			decryptedText = decryptedText.substring(0, 1).toUpperCase() +
+					decryptedText.substring(1);
 			}
+
 		System.out.println("The original message was " + decryptedText);
-		
 			
-		
-		
 		return regularSpacelessText;
-
-	
-
 		}
 
 	}

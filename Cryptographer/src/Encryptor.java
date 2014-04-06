@@ -75,7 +75,7 @@ public class Encryptor
 
 		for(int i = 0; i < reversedText.length() / 5; i++) 
 			{
-		    separator.insert(((i + 1) * 5) + i, " ");
+		    separator.insert(((i + 1) * 4) + i, " ");
 			}
 		textInBlocks = separator.toString();
 		
