@@ -6,7 +6,8 @@ public class Encryptor
 	{
 	static String originalSentence;
 	static String textInBlocks;
-	
+	static ArrayList locationsOfSpaces = new ArrayList();
+
 	public static String encryptor()
 		{
 		System.out.println("Please enter your sentence to be encrypted: ");
@@ -15,7 +16,6 @@ public class Encryptor
 		userInput.close();
 		originalSentence = originalSentence.toLowerCase();
 		
-		ArrayList locationsOfSpaces = new ArrayList();
 		for (int i = 0; i < originalSentence.length(); i++)
 			{
 			if (originalSentence.substring(i, i + 1).equals(" "))

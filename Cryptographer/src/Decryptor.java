@@ -1,7 +1,8 @@
 
 public class Decryptor
 	{
-
+	static String decryptedText;
+	
 	public static StringBuffer decryptor()
 		{
 		// strip spaces from 5-character blocks
@@ -46,6 +47,20 @@ public class Decryptor
 		System.out.println("The re-reversed version is " + regularSpacelessText);
 		
 		// add spaces back in
+		StringBuilder spaceReplacer = new StringBuilder(regularSpacelessText);
+		String [] tempString = new String[Encryptor.locationsOfSpaces.size()];
+		Object [] tempStringArray = Encryptor.locationsOfSpaces.toArray(tempString);
+
+		for(int i = (Encryptor.locationsOfSpaces.size()); i > 0; i--) 
+			{			
+			Object index = tempStringArray[i];
+			System.out.println("The index is " + index);
+			spaceReplacer.insert((int) index, " ");
+			decryptedText = spaceReplacer.toString();
+			}
+		System.out.println("The original message was " + decryptedText);
+		
+			
 		
 		
 		return regularSpacelessText;
