@@ -4,18 +4,38 @@ import java.util.Scanner;
 
 public class Encryptor
 	{
-	static String originalSentence;
-	static String textInBlocks;
+	static String originalSentence, encodedText, reversedText, reversedTextString;
 	static ArrayList locationsOfSpaces = new ArrayList();
+	
+	public static void encryptor()
+		{
+		getUserSentence();
+		convertToLowerCase();
+		recordLocationsOfSpaces();
+		stripOutSpaces();
+		replaceLetters();
+		reverseLetters();
+		separateLetters();
+		printCodedOutput();
+		}
 
-	public static String encryptor()
+	public static String getUserSentence()
 		{
 		System.out.println("Please enter your sentence to be encrypted: ");
 		Scanner userInput = new Scanner(System.in);
 		originalSentence = userInput.nextLine();
 		userInput.close();
+		return originalSentence;
+		}
+	
+	public static String convertToLowerCase()
+		{
 		originalSentence = originalSentence.toLowerCase();
-		
+		return originalSentence;
+		}
+	
+	public static void recordLocationsOfSpaces()
+		{
 		for (int i = 0; i < originalSentence.length(); i++)
 			{
 			if (originalSentence.substring(i, i + 1).equals(" "))
@@ -23,54 +43,45 @@ public class Encryptor
 				locationsOfSpaces.add(i);
 				}
 			}
-					
-		originalSentence = originalSentence.replace(" ","");
-	
-		StringBuffer reversedText = new StringBuffer(originalSentence);
-		reversedText = reversedText.reverse();
-		
-		for (int i = 0; i < reversedText.length(); i++)
-			{
-			switch (reversedText.substring(i,i +1))
-			{
-			case "a":
-				{
-				reversedText.replace(i, i +1, "@");
-				break;
-				}
-			case "e":
-				{
-				reversedText.replace(i, i +1, "#");
-				break;
-				}
-			case "i":
-				{
-				reversedText.replace(i, i +1, "$");
-				break;
-				}
-			case "o":
-				{
-				reversedText.replace(i, i +1, "%");
-				break;
-				}
-			case "u":
-				{
-				reversedText.replace(i, i +1, "&");
-				break;
-				}
-			}
 		}
 	
-		StringBuilder separator = new StringBuilder(reversedText);
+	public static String stripOutSpaces()
+		{			
+		originalSentence = originalSentence.replace(" ","");
+		return originalSentence;
+		}
+	
+	public static String replaceLetters()
+		{
+		originalSentence = originalSentence.replace("a", "@").replace("e", "#").replace("i", "$")
+		.replace("o", "%").replace("u", "&");
+		return originalSentence;
+		}
+	
+	public static String reverseLetters()
+		{
+		StringBuffer reversedText = new StringBuffer(originalSentence);
+		reversedText = reversedText.reverse();
+		reversedTextString = reversedText.toString();
+		return reversedTextString;
+		}
+		
+	public static void separateLetters()
+		{
+		StringBuilder separator = new StringBuilder(reversedTextString);
 
-		for(int i = 0; i < reversedText.length() / 5; i++) 
+		for(int i = 0; i < reversedTextString.length() / 5; i++) 
 			{
 		    separator.insert(((i + 1) * 4) + i, " ");
 			}
-		textInBlocks = separator.toString();
-		
+		encodedText = separator.toString();
+		}
+	
+	public static String printCodedOutput()
+		{
 		System.out.println();
-		System.out.println("The final output is " + textInBlocks);
-		return textInBlocks;
+		System.out.println("The final output is " + encodedText);
+		return encodedText;
 		}
 	}
+	

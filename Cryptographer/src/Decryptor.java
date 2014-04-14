@@ -1,62 +1,69 @@
 
 public class Decryptor
 	{
+	static String spacelessReversedText; 
+	static StringBuffer regularSpacelessText1;
 	static String decryptedText;
 	
-	public static StringBuffer decryptor()
+	public static void decryptor()
 		{
-		String spacelessReversedText = Encryptor.textInBlocks.replace(" ", "");
-
-		for (int i = 0; i < spacelessReversedText.length(); i++)
-			{
-			switch (spacelessReversedText.substring(i,i + 1))
-				{
-				case "@":
-					{
-					spacelessReversedText = spacelessReversedText.replace("@", "a");
-					break;
-					}
-				case "#":
-					{
-					spacelessReversedText = spacelessReversedText.replace("#", "e");
-					break;
-					}
-				case "$":
-					{
-					spacelessReversedText = spacelessReversedText.replace("$", "i");
-					break;
-					}
-				case "%":
-					{
-					spacelessReversedText = spacelessReversedText.replace("%", "o");
-					break;
-					}
-				case "&":
-					{
-					spacelessReversedText = spacelessReversedText.replace("&", "u");
-					break;
-					}
-				}
+		reStripSpaces();
+		replaceOriginalLetters();
+		reReverse();
+		replaceOriginalSpaces();
+		replaceInitialCapitalLetter();
+		printOriginalCode();
+		}
+	
+	public static String reStripSpaces()
+		{
+		String spacelessReversedText = Encryptor.encodedText.replace(" ", "");
+		System.out.println(spacelessReversedText);
+		return spacelessReversedText;
+		}
+	
+	public static String replaceOriginalLetters()
+		{
+		spacelessReversedText = spacelessReversedText.replace("@", "a").replace("#", "e")
+				.replace("$", "i").replace("%", "o").replace("&", "u");
+		System.out.println(spacelessReversedText);
+		return spacelessReversedText;
 		}
 
+	public static StringBuffer reReverse()
+		{
 		StringBuffer regularSpacelessText = new StringBuffer(spacelessReversedText);
-		regularSpacelessText = regularSpacelessText.reverse();
-		
-		StringBuilder spaceReplacer = new StringBuilder(regularSpacelessText);
+		regularSpacelessText1 = regularSpacelessText.reverse();
+		return regularSpacelessText1;
+		}
+	
+	public static String replaceOriginalSpaces()
+		{
+		StringBuilder spaceReplacer = new StringBuilder(regularSpacelessText1);
 
 		for (int i = (Encryptor.locationsOfSpaces.size()); i > 0; i--)
 			{
 			int spaces = ((int) Encryptor.locationsOfSpaces.get(i - 1));
 			spaceReplacer.insert((spaces - i + 1), " ");
-
 			}
+		
 		decryptedText = spaceReplacer.toString();
+		return decryptedText;
+		}
+	
+	public static String replaceInitialCapitalLetter()
+		{
 		decryptedText = decryptedText.substring(0, 1).toUpperCase() +
 				decryptedText.substring(1);
-		
+		return decryptedText;
+		}
+	
+	public static void printOriginalCode()
+		{
 		System.out.println();
 		System.out.println("The original message was: " + decryptedText);
-			
-		return regularSpacelessText;
 		}
+			
+		//return regularSpacelessText;
+		
 	}
