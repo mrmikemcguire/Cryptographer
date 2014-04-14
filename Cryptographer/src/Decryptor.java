@@ -2,7 +2,7 @@
 public class Decryptor
 	{
 	static String spacelessReversedText; 
-	static StringBuffer regularSpacelessText1;
+	static StringBuffer reorderedText;
 	static String decryptedText;
 	
 	public static void decryptor()
@@ -17,29 +17,27 @@ public class Decryptor
 	
 	public static String reStripSpaces()
 		{
-		String spacelessReversedText = Encryptor.encodedText.replace(" ", "");
-		System.out.println(spacelessReversedText);
+		spacelessReversedText = Encryptor.encodedText.replace(" ", "");
 		return spacelessReversedText;
 		}
 	
 	public static String replaceOriginalLetters()
 		{
 		spacelessReversedText = spacelessReversedText.replace("@", "a").replace("#", "e")
-				.replace("$", "i").replace("%", "o").replace("&", "u");
-		System.out.println(spacelessReversedText);
+				.replace("$", "i").replace("%", "o").replace("&", "u").replace("*", "s").replace("+", "t");
 		return spacelessReversedText;
 		}
 
 	public static StringBuffer reReverse()
 		{
 		StringBuffer regularSpacelessText = new StringBuffer(spacelessReversedText);
-		regularSpacelessText1 = regularSpacelessText.reverse();
-		return regularSpacelessText1;
+		reorderedText = regularSpacelessText.reverse();
+		return reorderedText;
 		}
 	
 	public static String replaceOriginalSpaces()
 		{
-		StringBuilder spaceReplacer = new StringBuilder(regularSpacelessText1);
+		StringBuilder spaceReplacer = new StringBuilder(reorderedText);
 
 		for (int i = (Encryptor.locationsOfSpaces.size()); i > 0; i--)
 			{

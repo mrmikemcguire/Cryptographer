@@ -54,7 +54,7 @@ public class Encryptor
 	public static String replaceLetters()
 		{
 		originalSentence = originalSentence.replace("a", "@").replace("e", "#").replace("i", "$")
-		.replace("o", "%").replace("u", "&");
+		.replace("o", "%").replace("u", "&").replace("s", "*").replace("t", "+");
 		return originalSentence;
 		}
 	
@@ -80,7 +80,7 @@ public class Encryptor
 	public static String printCodedOutput()
 		{
 		System.out.println();
-		System.out.println("The final output is " + encodedText);
+		System.out.println("The encoded output is: " + encodedText);
 		return encodedText;
 		}
 	}
