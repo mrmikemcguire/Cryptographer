@@ -1,9 +1,8 @@
 
 public class Decryptor
 	{
-	static String spacelessReversedText; 
+	static String spacelessReversedText, decryptedText; 
 	static StringBuffer reorderedText;
-	static String decryptedText;
 	
 	public static void decryptor()
 		{
@@ -61,7 +60,5 @@ public class Decryptor
 		System.out.println();
 		System.out.println("The original message was: " + decryptedText);
 		}
-			
-		//return regularSpacelessText;
-		
+	
 	}
